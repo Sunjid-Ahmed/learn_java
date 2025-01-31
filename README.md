@@ -25,7 +25,7 @@ learn-java/
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/learn-java.git
+   git clone https://github.com/Sunjid-Ahmed/learn-java.git
    ```
 2. Navigate to the directory:
    ```sh
