@@ -1,4 +1,4 @@
-import java.net.SocketTimeoutException;
+import java.util.Array;
 
 public class Array1D {
     public static void main(String[] args) {
