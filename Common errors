@@ -1,0 +1,129 @@
+### **Understanding the `Scanner` Input Issue in Java**
+
+When using `Scanner` in Java, input is processed using different methods such as `nextInt()`, `nextDouble()`, `nextFloat()`, and `nextLine()`. However, there is a common issue when mixing these methods: **the newline character (`\n`) left in the buffer can cause `nextLine()` to be skipped.**
+
+---
+
+### **Why Does This Happen?**
+1. **`nextInt()`, `nextDouble()`, and `nextFloat()` do not read the newline character (`\n`)**  
+   - When you enter a number (e.g., `20`) and press Enter, the input actually consists of:
+     ```
+     20\n
+     ```
+   - `nextInt()` (or `nextFloat()`, `nextDouble()`) reads only the **number (`20`)** but **leaves the newline (`\n`) in the input buffer**.
+
+2. **`nextLine()` reads until it encounters a newline character (`\n`)**  
+   - When `nextLine()` is called after `nextInt()` (or similar), it finds the leftover newline (`\n`) and assumes it is the input.
+   - As a result, `nextLine()` returns an **empty string** instead of waiting for actual input.
+
+---
+
+### **Example Scenario (Incorrect Behavior)**
+#### **Problem Code:**
+```java
+import java.util.Scanner;
+
+public class ScannerIssue {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();  // Reads full line
+        
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();  // Reads number but leaves newline (\n)
+        
+        System.out.print("Enter your department: ");
+        String department = scanner.nextLine();  // This will read leftover \n and return an empty string
+        
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Department: " + department);
+        
+        scanner.close();
+    }
+}
+```
+
+#### **User Input:**
+```
+Enter your name: John Doe
+Enter your age: 20
+Enter your department: Computer Science
+```
+
+#### **Expected Output:**
+```
+Name: John Doe
+Age: 20
+Department: Computer Science
+```
+
+#### **Actual Output (Incorrect):**
+```
+Name: John Doe
+Age: 20
+Department: 
+```
+- **Issue:** `department` is empty because `nextLine()` read the leftover `\n` from `nextInt()`, instead of waiting for user input.
+
+---
+
+### **How to Fix the Issue**
+#### **Solution: Consume the Leftover Newline**
+- After calling `nextInt()`, `nextFloat()`, or `nextDouble()`, **explicitly call `nextLine()` once** to consume the remaining newline before using `nextLine()` again.
+
+#### **Corrected Code:**
+```java
+import java.util.Scanner;
+
+public class ScannerFixed {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();  // Reads full line
+        
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();  // Reads number but leaves \n in buffer
+        scanner.nextLine();  // Consumes leftover \n
+        
+        System.out.print("Enter your department: ");
+        String department = scanner.nextLine();  // Now correctly waits for user input
+        
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Department: " + department);
+        
+        scanner.close();
+    }
+}
+```
+
+#### **User Input:**
+```
+Enter your name: John Doe
+Enter your age: 20
+Enter your department: Computer Science
+```
+
+#### **Correct Output:**
+```
+Name: John Doe
+Age: 20
+Department: Computer Science
+```
+
+---
+
+### **Summary**
+| **Method** | **Reads** | **Stops at** | **Consumes Newline (`\n`)?** |
+|------------|----------|-------------|------------------------------|
+| `nextInt()` | Integer | Space or Newline | ❌ No (Leaves `\n` in buffer) |
+| `nextFloat()` | Float | Space or Newline | ❌ No (Leaves `\n` in buffer) |
+| `nextDouble()` | Double | Space or Newline | ❌ No (Leaves `\n` in buffer) |
+| `nextLine()` | Full line (including spaces) | Newline (`\n`) | ✅ Yes |
+
+**✅ Fix:** Always call `scanner.nextLine();` after `nextInt()`, `nextDouble()`, or `nextFloat()` to remove the leftover newline before reading a full line with `nextLine()`.
+
+This ensures smooth and expected user input handling in Java programs. 🚀
