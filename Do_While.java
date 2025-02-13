@@ -10,7 +10,6 @@ public class Do_While {
             System.out.print("Enter a number: ");
             number = Input.nextInt();
             System.out.println("You entered: " + number);
-            // System.out.println(number);
 
         } while (number >= 0);
         System.out.println("THE END !");
