@@ -1,0 +1,18 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    int num=1,a=0,b=0,c,temp;
+    temp=num;
+    while(num>0)
+    {
+        a=num%10;
+        b=b*10+a;
+        num=num/10;
+    }
+    if(b==temp)
+    {
+        System.out.println(temp+" Palindrome");
+    }
+    else
+        System.out.println( temp+" not a palindrome");
+    }
+}

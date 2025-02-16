@@ -1,0 +1,19 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int num=76,div=1,mul,ans;
+		for(int i=num;i>1;i=i/10)
+		{
+		    div=div*10;
+		}
+		mul=num*num;
+	    ans=mul%div;
+	    if(ans==num)
+	    {
+	        System.out.println(num+" is Automorpic number");
+	    }
+	    else{
+	        System.out.println(num+" is not Automorpic number");
+	    }
+	}
+}
