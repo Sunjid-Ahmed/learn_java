@@ -1,0 +1,29 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int num=773,l,z=1;
+		int swap=num;
+		int x=0;
+		String str=String.valueOf(num);
+		l=str.length();
+		for(int i=1;i<=l;i++)
+		{
+		    int mod=num%10;
+		    num=num/10;
+		    z=1;
+		    for(int j=1;j<=mod;j++)
+		    {
+		         z=z*j;
+            } x=x+z;
+             
+		}
+		 if(x==swap)
+		 {
+		      System.out.println(swap +" is Peterson number");
+		 }
+		 else{
+		      System.out.println(swap +" is not peterson");
+		 }
+		
+	}
+}

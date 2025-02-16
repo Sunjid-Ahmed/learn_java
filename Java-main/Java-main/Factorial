@@ -1,0 +1,10 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    int num=4,a=1;
+    for(int i=num;i>0;i--)
+    {
+        a=a*i;
+    }
+    System.out.println(a);
+    }
+}

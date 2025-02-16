@@ -1,0 +1,15 @@
+	public static void main(String[] args) {
+		double n=80;
+		double res=Math.sqrt(n+1);
+		double v=res%1;
+		if(v==0)
+		{
+		    System.out.println("The given number is sunny number.");
+		}
+		else{
+		    System.out.println("The given number is not a sunny number.");
+		}
+	   
+		
+	}
+}

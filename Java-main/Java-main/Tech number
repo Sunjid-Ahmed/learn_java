@@ -1,0 +1,14 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int n=2025,m,add;
+	        int s=n;
+		    m=n%100;
+		    n=n/100;
+		    add=m+n;
+		    if(add*add==s)
+		    System.out.println(s+" is a tech number");
+		    else
+		    System.out.println(s+" is not a tech number");
+	}
+}

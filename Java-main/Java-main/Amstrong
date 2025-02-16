@@ -1,0 +1,17 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    int num=100,a,c=0;
+    int temp=num;
+    for(int i=0;i<3;i++)
+    {
+        a=num%10;
+        c+=a*a*a;
+        num=num/10;
+    }
+    if(c==temp)
+    System.out.println(temp+" is Amstrong number");
+    else
+    System.out.println(temp+" is Not Amstrong Number");
+    }
+}
+   

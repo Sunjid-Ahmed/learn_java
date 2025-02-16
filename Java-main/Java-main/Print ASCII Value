@@ -1,0 +1,8 @@
+class HelloWorld {
+    public static void main(String[] args) {
+        int ch1='t';
+        int ch2='q';
+        System.out.println("ASCII value of a is: "+ ch1);
+        System.out.println("ASCII value of a is: "+ch2);
+    }
+}
