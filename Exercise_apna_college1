@@ -19,6 +19,9 @@ public class Exercise_apna_college1 {
     public static void main(String args[]) {
         Exercise_apna_college1 ob = new Exercise_apna_college1();
         Exercise_apna_college1 ob1 = new Exercise_apna_college1("Rahul", 23);
+        ob.name = "sunjid";
+        ob.age = 23;
+        ob.printinfo();
         ob1.printinfo();
 
     }
