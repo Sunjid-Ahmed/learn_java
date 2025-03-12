@@ -1,0 +1,25 @@
+public class Exercise_apna_college1 {
+    public String name;
+    public int age;
+
+    Exercise_apna_college1(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void printinfo() {
+        System.out.println("name: " + this.name);
+        System.out.println("age: " + this.age);
+    }
+
+    Exercise_apna_college1() {
+        System.out.println("I am a constructor");
+    }
+
+    public static void main(String args[]) {
+        Exercise_apna_college1 ob = new Exercise_apna_college1();
+        Exercise_apna_college1 ob1 = new Exercise_apna_college1("Rahul", 23);
+        ob1.printinfo();
+
+    }
+}
