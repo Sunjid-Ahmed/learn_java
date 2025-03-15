@@ -27,8 +27,4 @@ public class Faculty extends Employee {
         System.out.println("(4) Faculty's no-arg constructor is invoked");
     }
 }
-public class Main{
-	public static void main() {
-		
-	}
-}
+
